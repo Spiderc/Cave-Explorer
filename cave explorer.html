@@ -1,0 +1,30 @@
+<html>
+<head>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="./main.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="./main.js"></script>
+</head>
+<body>
+	<div id="welcomeDialog" title="Welcome">
+		Wecome to Cave Explorer!
+		<br/><br/>
+		Press Space to see the next message.
+	</div>
+	<div id="rulesDialog" title="Game Rules">
+		Use the Arrow keys to move around the map. The exact contents of a square on the map are not revealed until you go to that square and illuminate it. Collect the torch placed in a random square to progress to the next level.
+		<br/><br/>
+		If you have any torches, you automatically track where you've been. Also, you can press space to use it to get rid of some of the obstacles that are blocking your path and explore the adjacent squares.
+	</div>
+	<div id="deathDialog" title="You Died!">
+		<div id="deathMessage"></div>
+		<br/><br/>
+		Press Space to start a new game.
+	</div>
+	<div id="messageArea" class="messages"></div>
+	<button class="clearLog" onClick="clearMessages();">Clear Log</button>
+	<div class="torches">Torches: <span id="torchesCount"></span></div>
+	<div id="gameArea" class="gameArea"></div>
+</body>
+</html>

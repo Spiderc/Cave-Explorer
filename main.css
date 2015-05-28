@@ -1,0 +1,37 @@
+.messages{
+	overflow: scroll;
+	height: 100px;
+}
+
+.gameArea{
+	text-align: center;
+}
+
+.square{
+	height: 50px;
+	width: 50px;
+	border: 1px solid #000;
+	display: inline-block;
+}
+
+.explored{
+	background-color: green;
+}
+
+.user{
+	background-color: red;
+}
+
+.ice{
+	background-color: blue;
+}
+
+.torches{
+	float: clear;
+	text-align: right;
+}
+
+.clearLog{
+	float: clear;
+	text-align: left;
+}
