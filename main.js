@@ -57,24 +57,24 @@ function createMap(){
 	}
 	map[0][0] = "user";
 	userSquare = [0, 0];
-	if(gameLevel > 2){
+	/* if(gameLevel > 2){
 		for(i = 0; i < gameLevel; i++){
 			square = pickRandomEmptyNonEdgeSquare();
 			map[square[0]][square[1]] = "ice patch";
 		}
+	} */
+	if(gameLevel > 1){
+		for(i = 0; i < gameLevel; i++){
+			square = pickRandomEmptySquare();
+			map[square[0]][square[1]] = "ice block";
+		}
 	}
-	//~ if(gameLevel > 1){
-		//~ for(i = 0; i < gameLevel; i++){
-			//~ square = pickRandomEmptySquare();
-			//~ map[square[0]][square[1]] = "ice block";
-		//~ }
-	//~ }
-	//~ if(gameLevel > 0){
-		//~ for(i = 0; i < gameLevel; i++){
-			//~ square = pickRandomEmptySquare();
-			//~ map[square[0]][square[1]] = "pit";
-		//~ }
-	//~ }
+	if(gameLevel > 0){
+		for(i = 0; i < gameLevel; i++){
+			square = pickRandomEmptySquare();
+			map[square[0]][square[1]] = "pit";
+		}
+	}
 	square = pickRandomEmptySquare();
 	map[square[0]][square[1]] = "torch";
 	drawMap();
@@ -133,9 +133,19 @@ function checkCurrentSquare(){
 			for(var i = 0; i < gameLevel + 2; i++){
 				for(var j = 0; j < gameLevel + 2; j++){
 					if(map[i][j] === "user"){
-						moveuser(userRow + (userRow - i), userCol + (userCol - j));
-						userSquare = [userRow + (userRow - i), userCol + (userCol - j)];
-						map[userRow][userCol] = "ice patch e";
+						if(i > userRow || j > userCol){
+							userSquare = [userRow + (userRow - i), userCol + (userCol - j)];
+							map[userRow + (userRow - i)][userCol + (userCol - j)] = "user";
+						} else {
+							userSquare = [userRow + (userRow - i), userCol + (userCol - j)];
+							if(i === userRow){
+								map[i][j + 2] = "user";
+							} else {
+								map[i + 2][j] = "user";
+							}
+						}
+						map[i][j] = "explored";
+						map[userRow][userCol] = "ice patch e";						
 					}
 				}
 			}
